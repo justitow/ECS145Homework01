@@ -1,7 +1,7 @@
 class polynom:
     def __init__(self, poly_list):
-        self.poly = list(poly_list)
-        self.trim_zeros()
+        self.poly = list(poly_list) #calling list makes sure to make a new instance
+        self.poly = self.trim_zeroes(self.poly)
 
     #adds two things, I used this in the map function later on, there is probably
     #something built in to python, but I couldn't find it
@@ -10,22 +10,26 @@ class polynom:
     def element_sub(self, x, y):
         return x - y
 
-    def trim_zeros(self):
+    #removes any zeros that are prepended to the list
+    #if the list is all zeroes, it turns it into an empty list
+    #returns nothing
+    def trim_zeroes(self, trim_poly):
         zero_index = 0
-        while zero_index < len(self.poly) and self.poly[zero_index] == 0:
+        while zero_index < len(trim_poly) and trim_poly[zero_index] == 0:
             zero_index += 1
-        if zero_index >= len(self.poly):
-            self.poly = []
+        if zero_index >= len(trim_poly):
+            return []
         else:
-            self.poly = self.poly[zero_index:]
+            return trim_poly[zero_index:]
 
+    #returns a list that is the addition of two polynomials
     def __add__(self, other):
         # need to check if other's type is polynom?
         diff = len(self.poly) - len(other.poly)
         if diff > 0:
-            return  map(self.element_add, self.poly, [0]*diff + other.poly)
+            return  self.trim_zeroes(map(self.element_add, self.poly, [0]*diff + other.poly))
         else:
-            return map(self.element_add, [0]*(-diff) + self.poly, other.poly)
+            return self.trim_zeroes(map(self.element_add, [0]*(-diff) + self.poly, other.poly))
 
 
     def __sub__(self, other):
