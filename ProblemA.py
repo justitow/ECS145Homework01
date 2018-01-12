@@ -10,6 +10,7 @@ class polynom:
     def element_sub(self, x, y):
         return x - y
 
+    # %%%%%%% to test pycharm
     # removes any zeros that are prepended to the list
     # if the list is all zeroes, it turns it into an empty list
     # returns nothing
