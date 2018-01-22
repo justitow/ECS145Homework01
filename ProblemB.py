@@ -1,9 +1,10 @@
-# Example of Walk Function
-# Finds matching files in directories
-# Uses Walk to search directories recursively
+# ProblemB.py
+# Using walk to perform a BFS starting at root specified as command line arg
+# Adds all files recursively into a class fileDirectory and stored them as pointers to pathName
+# Compares numBytes in each new file read with ones in the fileDirectory 
 
 # usage:
-#   python ProblemB.py [dir][numBytes]
+#   python ProblemB.py [dtree][numBytes]
 
 import os, sys
 
