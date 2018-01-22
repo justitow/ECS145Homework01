@@ -52,11 +52,7 @@ def getlocaldata(rdir, dr, flist):
 
         if os.path.islink(fullf): continue # don't count linked files
         if os.path.isfile(fullf):
-
             fd.add(fullf)
-
-        else:
-            i = 0
 
 def filePairs(dtree, nBytes):
 
